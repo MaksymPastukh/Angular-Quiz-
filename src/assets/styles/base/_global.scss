@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Museo Sans Cyrl', sans-serif;
+  overflow-x: hidden;
+  color: #333333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+a {
+  color: #6933dc;
+}
+
+.big-title {
+  font-family: 'Museo Sans Cyrl Bolt', sans-serif;
+  font-size: 54px;
+  line-height: 65px;
+
+  span {
+    color: #6933dc;
+  }
+}
+
+.common-title {
+  font-family: 'Museo Sans Cyrl Bolt', sans-serif;
+  font-size: 48px;
+  line-height: 58px;
+  color: #333333;
+
+  span {
+    color: #6933dc;
+  }
+}
+
+
+
