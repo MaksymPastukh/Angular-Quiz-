@@ -1,0 +1,20 @@
+<section class="result">
+  <div class="container">
+    <div class="result-background-image">
+      <img
+        src="assets/images/background-result.png"
+        alt="Result background images"
+      />
+    </div>
+    <div class="big-title result-title">
+      Ура! Ты прошёл тест! <span>Твой результат: </span>
+    </div>
+    <div class="result-score" id="result-score">{{ result }}</div>
+  </div>
+  <div class="link-result-value">
+    <a  href="javascript:void(0)"  (click)="detailsPage()" id="result-value"
+    >Посмотреть правильные ответы
+      <img src="assets/images/small-arrow.png" alt="small-arrow"/></a>
+  </div>
+</section>
+

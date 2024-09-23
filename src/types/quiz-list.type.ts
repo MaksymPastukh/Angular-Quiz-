@@ -1,4 +1,5 @@
 export type QuizListType = {
   id: number,
-  name: string
+  name: string,
+  result?: string
 }

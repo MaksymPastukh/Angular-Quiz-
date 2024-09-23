@@ -6,6 +6,7 @@ import {Observable, Subject, tap} from "rxjs";
 import {UserInfoType} from "../../../types/user-info.type";
 import {LogoutResponseType} from "../../../types/logout-response.type";
 import {SignupResponseType} from "../../../types/signup-response.type";
+import {RefreshResponseType} from "../../../types/refresh-response.type";
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,7 @@ export class AuthService {
     })
       .pipe(
         tap((data: LoginResponseType) => {
-          if(data.fullName && data.userId && data.accessToken && data.refreshToken) {
+          if (data.fullName && data.userId && data.accessToken && data.refreshToken) {
             this.setUserInfo({
               fullName: data.fullName,
               userId: data.userId,
@@ -54,6 +55,14 @@ export class AuthService {
       lastName,
       email,
       password
+    })
+  }
+
+  refresh(): Observable<RefreshResponseType> {
+    const refreshToken: string | null = localStorage.getItem(this.refreshTokenKey)
+
+    return this.http.post<RefreshResponseType>(environment.apiHost + 'refresh', {
+      refreshToken
     })
   }
 
@@ -87,6 +96,14 @@ export class AuthService {
     this.isLogged = false
     // Сохраняем состояние в Subject
     this.isLogged$.next(false)
+  }
+
+// Метод для получения токенов с локального хранилища в объекте
+  getTokens(): { accessToken: string | null, refreshToken: string | null } {
+    return {
+      accessToken: localStorage.getItem(this.accessTokenKey),
+      refreshToken: localStorage.getItem(this.refreshTokenKey),
+    }
   }
 
 

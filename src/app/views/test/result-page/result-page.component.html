@@ -1,0 +1,40 @@
+<section class="resultValue">
+  <div class="container">
+    <div class="resultValue-pre-title">
+      Результат прохождения теста
+      <img src="assets/images/arrow-small.png" alt="arrow-small"/>
+      <span id="pre-title"></span>
+    </div>
+    <div class="resultValue-title">
+      <span>Правильные ответы</span> к тесту
+    </div>
+    <div class="result-user-title">
+      Тест выполнил :
+      <span id="user-name">{{ user }}</span>
+    </div>
+    <div class="result-question-options" id="res-options"
+         *ngFor="let item of this.resultDetails.test.questions; let i = index">
+      <div class="result-question-title">
+        <span>Вопрос {{ i + 1 }} : </span>
+        {{ item.question }}
+      </div>
+      <div class="result-question-option" *ngFor="let items of item.answers">
+        <input class="option-answer" [ngClass]="items.correct ? 'result-input-success' : ''"
+               id="answer-{{items.id}}"
+               type="radio"
+               name="answer"
+               [ngClass]="items.correct === true ? 'result-input-success' : (items.correct === false) ? 'result-input-error' : ''"
+               [value]="items.id">
+        <label for="answer-{{items.id}}"
+               [ngClass]="items.correct === true ? 'result-success' : (items.correct === false) ? 'result-error' : ''">
+          {{ items.answer }}</label>
+      </div>
+    </div>
+  </div>
+  <div class="link-result-value">
+    <a href="javascript:void(0)" (click)="backResultQuiz()" id="result-value"
+    >Обратно к моему результату теста
+      <img src="assets/images/small-arrow.png" alt="small-arrow"/></a>
+  </div>
+</section>
+
